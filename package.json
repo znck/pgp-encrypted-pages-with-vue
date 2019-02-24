@@ -1,13 +1,15 @@
 {
-  "name": "poulami",
-  "version": "0.1.0",
+  "name": "encrypted-pages",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "predeploy": "npm run build",
+    "deploy": "cp dist/index.html dist/200.html && surge dist encrypted-pages-with-vue.surge.sh"
   },
   "dependencies": {
+    "openpgp": "^4.4.7",
     "register-service-worker": "^1.5.2",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1"
@@ -21,6 +23,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
+    "raw-loader": "^1.0.0",
     "vue-template-compiler": "^2.5.21"
   },
   "eslintConfig": {
@@ -46,5 +49,10 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "semi": false
+  }
 }
